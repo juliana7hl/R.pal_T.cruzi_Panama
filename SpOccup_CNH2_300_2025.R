@@ -43,6 +43,9 @@ str(data.list)
 # 2. Models -----------------------------------------------------------
 
 ####Detection
+
+##Linear equation: logit(pij​)=α0​+α1​⋅tempmean​+α2​⋅precip
+​
 btbw.occ.formula1.300<- ~ 1
 btbw.det.formula <- ~ scale(tempmean)+scale(precip)
 out1.300 <- spPGOcc(occ.formula = btbw.occ.formula1.300,
@@ -466,7 +469,7 @@ waicOcc(out4a)
 
 ######Additive models
 
-###Linear model: logit(ψi​)=β0​+β1​⋅Sucecional Forest^2​+β2​⋅Grassland^2​+β3​⋅infrutescence
+###Linear equation: logit(ψi​)=β0​+β1​⋅Sucecional Forest^2​+β2​⋅Grassland^2​+β3​⋅infrutescence
 
 btbw.occ.formula10.300 <- ~ I(scale(`Sucecional Forest`)^2) + I(scale(Grassland))^2 + scale(infrutescence)
 btbw.det.formula <- ~ scale(precip)
@@ -494,7 +497,7 @@ MCMCplot(out10.300$alpha.samples, ref_ovl=TRUE, ci=c(50, 95))
 
 ####### Models with only land Use covers
 
-###Linear Model: logit(ψi​)=β0​+β1​⋅Sucecional Forest^2​+β2​⋅Grassland^2​+β3​⋅Cropland^2​+β4​⋅Artificial^2​
+###Linear equation: logit(ψi​)=β0​+β1​⋅Sucecional Forest^2​+β2​⋅Grassland^2​+β3​⋅Cropland^2​+β4​⋅Artificial^2​
 btbw.occ.formula11.300 <- ~ I(scale(`Sucecional Forest`)^2) + I(scale(Grassland))^2 + I(scale(Cropland)^2) + I(scale(Artificial)^2) 
 btbw.det.formula <- ~ scale(precip)
 out11.300  <- spPGOcc(occ.formula = btbw.occ.formula11.300 ,
@@ -522,7 +525,7 @@ MCMCplot(out11.300$alpha.samples, ref_ovl=TRUE, ci=c(50, 95))
 
 
 ####
-####Linear Model: logit(ψi​)=β0​+β1​⋅Sucecional Forest^2​+β2​⋅Grassland^2​+β3​⋅Cropland^2​+β4​⋅Artificial^2​+β5​⋅infrutescence​
+####Linear Equation: logit(ψi​)=β0​+β1​⋅Sucecional Forest^2​+β2​⋅Grassland^2​+β3​⋅Cropland^2​+β4​⋅Artificial^2​+β5​⋅infrutescence​
 btbw.occ.formula12.300 <- ~ I(scale(`Sucecional Forest`)^2) + I(scale(Grassland))^2 + I(scale(Cropland)^2) + I(scale(Artificial)^2) + scale(infrutescence)
 btbw.det.formula <- ~ scale(precip)
 out12.300  <- spPGOcc(occ.formula = btbw.occ.formula12.300 ,
@@ -551,6 +554,7 @@ MCMCplot(out12.300$alpha.samples, ref_ovl=TRUE, ci=c(50, 95))
 
 
 ####
+###Linear equation: logit(ψi​)=β0​+β1​⋅Sucecional Forest^2​+β2​⋅Grassland^2​+β3​⋅Cropland^2​+β4​⋅Artificial^2​+β5​⋅infrutescence​+β6​⋅DOM_score^2​
 btbw.occ.formula13.300 <- ~ I(scale(`Sucecional Forest`)^2) + I(scale(Grassland))^2 + I(scale(Cropland)^2) + I(scale(Artificial)^2) + scale(infrutescence) + I(scale(DOM_score)^2)
 btbw.det.formula <- ~ scale(precip)
 out13.300  <- spPGOcc(occ.formula = btbw.occ.formula13.300 ,
@@ -577,6 +581,8 @@ MCMCplot(out13.300$alpha.samples, ref_ovl=TRUE, ci=c(50, 95))
 
 
 ####
+###Linear equation: logit(ψi​)=β0​+β1​⋅Sucecional Forest^2​+β2​⋅Grassland^2​+β3​⋅Cropland^2​+β4​⋅Artificial^2​+β5​⋅infrutescence​+β6​⋅DOM_score^2​+β7​⋅Altitude (feet)^2​
+
 btbw.occ.formula14.300 <- ~ I(scale(`Sucecional Forest`)^2) + I(scale(Grassland))^2 + I(scale(Cropland)^2) + I(scale(Artificial)^2) + scale(infrutescence) + I(scale(DOM_score)^2) + I(scale(`Altitude (feet)`)^2)
 btbw.det.formula <- ~ scale(precip)
 out14.300  <- spPGOcc(occ.formula = btbw.occ.formula14.300 ,
@@ -603,6 +609,8 @@ MCMCplot(out14.300$alpha.samples, ref_ovl=TRUE, ci=c(50, 95))
 
 
 ####
+####Linear equation: logit(ψi​)=β0​+β1​⋅(Successional Forest​)^2+β2​⋅(Grassland​)^2+β3​⋅(Cropland)^2+β4​⋅(Artificial Land Cover)^2+β5​⋅Infrutescence​+β6​⋅(DOM Score​)^2+β7​⋅(Altitude​)^2
+
 btbw.occ.formula15.300 <- ~ I(scale(`Sucecional Forest`)^2) + I(scale(Grassland))^2 + I(scale(Cropland)^2) + I(scale(Artificial)^2) + scale(infrutescence) + I(scale(DOM_score)^2) + I(scale(`Altitude (feet)`)^2)
 btbw.det.formula <- ~ scale(precip)
 out14.300  <- spPGOcc(occ.formula = btbw.occ.formula14.300 ,
@@ -630,7 +638,7 @@ MCMCplot(out14.300$alpha.samples, ref_ovl=TRUE, ci=c(50, 95))
 
 
 ####
-
+####Linear equation: logit(ψi​)=β0​+β1​⋅(Successional Forest)^2+β2​⋅(Grassland)^2+β3​⋅Cropland+β4​⋅Artificial Land Cover+β5​⋅(DOM Score)^2+β6​⋅Infrutescence
 btbw.occ.formula4.2.1 <- ~ I(scale(`Sucecional Forest`)^2) + I(scale(Grassland)^2) + scale (Cropland) + scale (Artificial) +  I(scale(DOM_score)^2) + scale(infrutescence)
 btbw.det.formula <- ~ scale(precip)
 out4.2.1 <- spPGOcc(occ.formula = btbw.occ.formula4.2.1,
@@ -658,6 +666,8 @@ MCMCplot(out4.2.1$beta.samples, ref_ovl=TRUE, mar = c(5.1, 4.1, 4.1, 2.1),labels
 MCMCplot(out4.2.1$alpha.samples, ref_ovl=TRUE, ci=c(50, 89))
 
 ####The best so so far! 2024 with Precip
+
+###Linear equation: logit(ψi​)=β0​+β1​⋅(Successional Forest)^2+β2​⋅(Native Forest)^2+β3​⋅(Grassland)^2+β4​⋅(Cropland)^2+β5​⋅(DOM Score)^2+β6​⋅Infrutescence+β7​⋅(Altitude)^2+β8​⋅Connected Trees
 btbw.occ.formula4.2.2 <- ~ I(scale(`Sucecional Forest`)^2) + I(scale(`Native forest`)^2) + I(scale(`Grassland`)^2) +I(scale(Cropland)^2)+ I(scale(DOM_score)^2) + scale(infrutescence) + I(scale(`Altitude (feet)`)^2) + scale(connected_trees)
 btbw.det.formula <- ~ scale(precip)
 out4.2.2 <- spPGOcc(occ.formula = btbw.occ.formula4.2.2,
@@ -688,6 +698,8 @@ rMCMCplot(out4.2.2$alpha.samples, ref_ovl=TRUE, rank = TRUE, ci=c(50, 95), mar =
 #________________
 ####The best so so far! 2024 with Max temp
 
+###Linear equation: logit(ψi​)=β0​+β1​⋅(Successional Forest)^2+β2​⋅(Native Forest)^2+β3​⋅(DOM Score)^2+β4​⋅(Cropland)^2+β5​⋅Infrutescence+β6​⋅Connected Trees
+
 btbw.occ.formula4.2.2 <- ~ I(scale(`Sucecional Forest`)^2) + I(scale(`Native forest`)^2)+ I(scale(DOM_score)^2)+ I(scale(Cropland)^2) + scale(infrutescence) + scale(connected_trees)
 btbw.det.formula <- ~ scale(tempmax)
 out4.2.2 <- spPGOcc(occ.formula = btbw.occ.formula4.2.2,
@@ -717,6 +729,9 @@ MCMCplot(out4.2.2$alpha.samples, sz_ax_txt = 1.2, horiz = FALSE, guide_axis = TR
 
 
 ###Best Model, Temp Max, Non spatial
+
+####Linear equation: logit(ψi​)=β0​+β1​⋅(Successional Forest)^2+β2​⋅(Native Forest)^2+β3​⋅(DOM Score)^2+β4​⋅(Cropland)^2+β5​⋅Infrutescence+β6​⋅Connected Trees
+
 btbw.occ.formula4b <- ~ I(scale(`Sucecional Forest`)^2) + I(scale(`Native forest`)^2)+ I(scale(DOM_score)^2)+ I(scale(Cropland)^2) + scale(infrutescence) + scale(connected_trees)
 btbw.det.formula <- ~ scale(tempmax)
 n.samples <- 5000
@@ -748,107 +763,9 @@ waicOcc(out4b)
 MCMCplot(object= out4b$beta.samples, guide_axis = TRUE , ref_ovl=TRUE, mar = c(6.1, 5.1, 4.1, 4.1),labels= c("Intercept", expression("Successional Forest" ^ 2), expression("Native Forest" ^ 2), expression("DOM score" ^ 2),
                                                                                                                 expression("Cropland" ^ 2),"Artificial"), ci=c(50, 91))
 
-
-#The best so so far_Non spatial with precipitation 
-btbw.occ.formula4b <- ~ I(scale(`Sucecional Forest`)^2) + I(scale(`Native forest`)^2) + I(scale(`Grassland`)^2) +I(scale(Cropland)^2)+ I(scale(DOM_score)^2) + scale(infrutescence) + I(scale(`Altitude (feet)`)^2) + scale(connected_trees)
-btbw.det.formula <- ~ scale(precip)
-n.samples <- 5000
-
-prior.list <- list(beta.normal = list(mean = 0, var = 2.72),
-                   alpha.normal = list(mean = 0, var = 2.72))
-
-inits.list <- list(alpha = 0, beta = 0,
-                   z = apply(data.list$y, 1, max, na.rm = TRUE))
-n.report <- 1000
-
-out4b <- PGOcc(occ.formula = btbw.occ.formula4b, 
-               det.formula = btbw.det.formula, 
-               data = data.list, 
-               inits = inits.list,
-               n.samples = n.samples,
-               priors = prior.list,
-               n.omp.threads = 1,
-               verbose = TRUE,
-               n.report = n.report, 
-               n.burn = 1000, 
-               n.thin = 1, 
-               n.chains = 40)
-
-summary(out4b)
-ppc.out4b <- ppcOcc(out4b, fit.stat = 'freeman-tukey', group = 1)
-summary(ppc.out4b)
-waicOcc(out4b)
-
-MCMCplot(out4b$beta.samples, guide_axis = TRUE ,rank = TRUE, ref_ovl=TRUE, mar = c(6.1, 5.1, 4.1, 4.1),labels= c("Intercept", expression("Successional Forest" ^ 2), expression("Native Forest" ^ 2),
-                                                                                                                 expression("Grassland" ^ 2), expression("Cropland" ^ 2), expression("DOM score" ^ 2), "Infructescence", expression("Elevation" ^ 2), "Number surrounding palms"), ci=c(50, 93))
-###
-
-
-
-
-## Best model, Quadratic effect, spatial 
-
-btbw.occ.formula4.2.3 <- ~ I(scale(`Sucecional.Forest`)^2) * I(scale(`Native.Forest`)^2)+ I(scale(Grassland)^2) + I(scale(Artificial)^2) + I(scale(Cropland)^2) +  I(scale(DOM_score)^2) + scale(infrutescence) + I(scale(`Altitude..feet.`)^2)+ scale(Stem_height) 
-btbw.det.formula <- ~ scale(precip) 
-out4.2.3 <- spPGOcc(occ.formula = btbw.occ.formula4.2.3,
-                    det.formula = btbw.det.formula,
-                    data = data.list, 
-                    n.batch = 5000, 
-                    batch.length = 15,
-                    NNGP = TRUE, 
-                    cov.model = "exponential", 
-                    n.neighbors = 8, 
-                    n.burn = 2000, 
-                    n.thin = 4, 
-                    n.chains = 3, 
-                    verbose = FALSE, 
-                    k.fold = 2)
-
-summary(out4.2.3)
-ppc.out4.2.3 <- ppcOcc(out4.2.3, fit.stat = 'freeman-tukey', group = 1)
-summary(ppc.out4.2.3)
-waicOcc(out4.2.3)
-names(out4.2.3)
-str(out4.2.3$beta.samples)
-MCMCplot(out4.2.3$beta.samples, guide_lines = TRUE, guide_axis = TRUE, ref_ovl=TRUE, 
-         mar = c(5.1, 4.1, 4.1, 2.1),labels= c("Intercept", "Successional Forest*", "Native Forest",
-                                               "Grassland*", "Artifical*", "Cropland*", "DOM score*", "Infructescence", "Elevation*", "Stem height"), ci=c(75, 95), rank = TRUE)
-MCMCplot(out4.2.3$alpha.samples, ref_ovl=TRUE, ci=c(85, 95))
-fitted(ppc.out4.2.3)
-fitted(out4.2.3)
-
-#### Best model, Linear effect, spatial 
-
-btbw.occ.formula4.2.4 <- ~  scale(`Sucecional Forest`) + scale(Grassland) + scale(Artificial) + scale(Cropland) +  scale(DOM_score) + scale(infrutescence) + scale(`Altitude (feet)`)+ scale(Stem_height) 
-btbw.det.formula <- ~ scale(precip)
-out4.2.4 <- spPGOcc(occ.formula = btbw.occ.formula4.2.4,
-                    det.formula = btbw.det.formula,
-                    data = data.list, 
-                    n.batch = 4000, 
-                    batch.length = 15,
-                    NNGP = TRUE, 
-                    cov.model = "exponential", 
-                    n.neighbors = 8, 
-                    n.burn = 2000, 
-                    n.thin = 4, 
-                    n.chains = 3, 
-                    verbose = FALSE, 
-                    k.fold = 2)
-
-summary(out4.2.4)
-ppc.out4.2.4 <- ppcOcc(out4.2.4, fit.stat = 'freeman-tukey', group = 1)
-summary(ppc.out4.2.4)
-waicOcc(out4.2.4)
-names(out4.2.4)
-str(out4.2.4$beta.samples)
-MCMCplot(out4.2.4$beta.samples, guide_lines = TRUE, guide_axis = TRUE, ref_ovl=TRUE, mar = c(5.1, 4.1, 4.1, 2.1),labels= c("Intercept", "Successional Forest*",
-                                                                                                                           "Grassland*", "Artifical*", "Cropland*", "DOM score*", "Infructescence", "Elevation*", "Stem height"), ci=c(50, 95), rank = TRUE)
-MCMCplot(out4.2.4$alpha.samples, ref_ovl=TRUE, ci=c(50, 95))
-fitted(ppc.out4.2.4)
-fitted(out4.2.4)
-
-
 ###Null model
+### Linear equation, Occupancy model (ψ): logit(ψi​)=β0​
+### Linear equation, Detection model (p): logit(pij​)=α0​+α1​⋅Precipitation+α2​⋅Maximum Temperature
 
 btbw.occ.formula4a <- ~ 1
 btbw.det.formula <- ~ scale(precip)+ scale(tempmax)
@@ -879,6 +796,8 @@ MCMCplot(out4a$alpha.samples, ref_ovl=TRUE, ci=c(50, 90))
 
 ###
 ### Global model, Quadratic effect, spatial 
+
+##Linear Equation: logit(ψi​)=β0​+β1​⋅(Native Forest)^2+β2​⋅(Successional Forest)^2+β3​⋅Grassland+β4​⋅(Artificial Land Cover)^2+β5​⋅(Cropland)^2+β6​⋅(DOM Score)^2+β7​⋅Infrutescence+β8​⋅(Altitude)^2+β9​⋅Stem Height+β10​⋅Connected Trees
 btbw.occ.formula4.2.3 <- ~ I(scale(`Native forest`)^2) + I(scale(`Sucecional Forest`)^2) + scale(Grassland) + I(scale(Artificial)^2) + I(scale(Cropland)^2) +  I(scale(DOM_score)^2) + scale(infrutescence) + I(scale(`Altitude (feet)`)^2)+ scale(Stem_height) + scale(connected_trees)
 btbw.det.formula <- ~ scale(precip)
 out4.2.3 <- spPGOcc(occ.formula = btbw.occ.formula4.2.3,
@@ -906,6 +825,9 @@ MCMCplot(out4.2.3$alpha.samples, ref_ovl=TRUE, labels= c("Intercept", "Precipita
 
 ###
 ### Global model, Linear effect, spatial 
+
+##Linear Equation: logit(ψi​)=β0​+β1​⋅(Native Forest)^2+β2​⋅(Successional Forest)^2+β3​⋅Grassland+β4​⋅(Artificial Land Cover)^2+β5​⋅(Cropland)^2+β6​⋅(DOM Score)^2+β7​⋅Infrutescence+β8​⋅(Altitude)^2+β9​⋅Stem Height+β10​⋅Connected Trees
+
 btbw.occ.formula4.2.6 <- ~ scale(`Native forest`) + scale(`Sucecional Forest`) + scale(Grassland) + scale(Artificial) + scale(Cropland) +  scale(DOM_score) + scale(infrutescence) + scale(`Altitude (feet)`)+ scale(Stem_height) 
 btbw.det.formula <- ~ scale(precip)
 out4.2.6 <- spPGOcc(occ.formula = btbw.occ.formula4.2.6,
@@ -931,6 +853,7 @@ waicOcc(out4.2.6)
 
 
 ##Global model, Quadratic effect, No-spatial 
+### logit(ψi​)=β0​+β1​⋅(Native Forest)^2+β2​⋅(Successional Forest)^2+β3​⋅Grassland+β4​⋅(Artificial Land Cover)^2+β5​⋅(Cropland)^2+β6​⋅(DOM Score)^2+β7​⋅Infrutescence+β8​⋅(Altitude)^2+β9​⋅Stem Height+β10​⋅Connected Trees
 
 btbw.occ.formula4g <- ~ I(scale(`Native forest`)^2) + I(scale(`Sucecional Forest`)^2) + scale(Grassland) + I(scale(Artificial)^2) + I(scale(Cropland)^2) +  I(scale(DOM_score)^2) + scale(infrutescence) + I(scale(`Altitude (feet)`)^2)+ scale(Stem_height) + scale(connected_trees)
 btbw.det.formula <- ~ scale(precip)
@@ -964,6 +887,8 @@ waicOcc(out4g)
 ###
 ##Global model, Linear effect, No-spatial 
 
+### Linear Equation: logit(ψi​)=β0​+β1​⋅(Native Forest)^2+β2​⋅(Successional Forest)^2+β3​⋅Grassland+β4​⋅(Artificial Land Cover)^2+β5​⋅(Cropland)^2+β6​⋅(DOM Score)^2+β7​⋅Infrutescence+β8​⋅(Altitude)^2+β9​⋅Stem Height+β10​⋅Connected Trees
+
 btbw.occ.formula4h <- ~ scale(`Native forest`) + (`Sucecional Forest`) + scale(Grassland) + scale(Artificial) + scale(Cropland) +  scale(DOM_score) + scale(infrutescence) + scale(`Altitude (feet)`) + scale(Stem_height)
 btbw.det.formula <- ~ scale(precip)
 n.samples <- 5000
@@ -994,7 +919,9 @@ summary(ppc.out4h)
 waicOcc(out4h)
 
 
-##No spatial, Linear effect, best additive 
+##No spatial, Linear effect 
+
+##Linear Equation: logit(ψi​)=β0​+β1​⋅Infrutescence+β2​⋅Stem Height+β3​⋅Successional Forest+β4​⋅Grassland
 
 btbw.occ.formula4c <- ~ scale(infrutescence) + scale(Stem_height) + scale(`Sucecional Forest`) + scale(Grassland) +
   btbw.det.formula <- ~ scale(precip)
@@ -1026,6 +953,8 @@ summary(ppc.out4c)
 waicOcc(out4c)
 
 ##No spatial, Null model 
+
+###Linear Equation: logit(ψi​)=β0​
 
 btbw.occ.formula4d <- ~ 1
 btbw.det.formula <- ~ scale(precip)
@@ -1068,6 +997,8 @@ names(out4b)
 
 #### Best model, Linear effect, spatial (reduced)
 
+###Linear Equation: logit(ψi​)=β0​+β1​⋅Infrutescence+β2​⋅Stem Height+β3​⋅Successional Forest+β4​⋅Grassland+β5​⋅Altitude
+
 btbw.occ.formula4.2.5 <- ~ scale(infrutescence) + scale(Stem_height) + scale(`Sucecional Forest`) + scale(Grassland) + scale(`Altitude (feet)`)
 btbw.det.formula <- ~ scale(precip)
 out4.2.5 <- spPGOcc(occ.formula = btbw.occ.formula4.2.5,
@@ -1090,107 +1021,9 @@ summary(ppc.out4.2.5)
 waicOcc(out4.2.5)
 
 
-
-# Predictions -----------------------------------------------------------
-# Predict occupancy along a gradient of Successional forest cover.  
-# Create a set of values across the range of observed Successional forest values
-Sucecional.pred.vals <- seq(min(data.list$occ.covs$`Sucecional Forest`), 
-                            max(data.list$occ.covs$`Sucecional Forest`), 
-                            length.out = 100)
-
-# Scale predicted values by mean and standard deviation used to fit the model
-
-Sucecional.pred.vals.scale <- ((Sucecional.pred.vals - mean(data.list$occ.covs$`Sucecional Forest`)) / sd(data.list$occ.covs$`Sucecional Forest`))
-
-# Predict occupancy across forest values at mean values of all other variables
-pred.df <- as.matrix(data.frame(intercept = 1, Sucecional = Sucecional.pred.vals.scale, 
-                                Grassland = 0, Cropland = 0, 
-                                Artificial = 0, DOM_score = 0, infrutescence=0,`Altitude (feet)`= 0, Stem_height=0))
-
-out.pred <- predict(out4b, pred.df)
-str(out.pred)
-psi.0.quants <- apply(out.pred$psi.0.samples, 2, quantile, 
-                      prob = c(0.05, 0.5, 0.95))
-psi.plot.dat <- data.frame(psi.med = psi.0.quants[2, ], 
-                           psi.low = psi.0.quants[1, ], 
-                           psi.high = psi.0.quants[3, ], 
-                           Sucecional = Sucecional.pred.vals)
-ggplot(psi.plot.dat, aes(x = Sucecional, y = psi.med)) + 
-  geom_ribbon(aes(ymin = psi.low, ymax = psi.high), alpha= 0.4, fill = 'olivedrab4') +
-  geom_line() + 
-  theme_bw() + 
-  scale_y_continuous(limits = c(0, 1)) + 
-  labs(x = 'Successional (% cover)', y = 'Occupancy Probability')
-
-# Predict occupancy along a gradient of Elevation cover.  
-# Create a set of values across the range of observed Successional forest values
-Elevation.pred.vals <- seq(min(data.list$occ.covs$`Altitude (feet)`), 
-                           max(data.list$occ.covs$`Altitude (feet)`), 
-                           length.out = 100)
-
-# Scale predicted values by mean and standard deviation used to fit the model
-
-Elevation.pred.vals.scale <- ((Elevation.pred.vals - mean(data.list$occ.covs$`Altitude (feet)`)) / sd(data.list$occ.covs$`Altitude (feet)`))
-
-# Predict occupancy across forest values at mean values of all other variables
-pred.df1 <- as.matrix(data.frame(intercept = 1, Elevation = scale(Elevation.pred.vals.scale), 
-                                 Grassland = 0, Cropland = 0, 
-                                 Artificial = 0, DOM_score = 0, infrutescence=0,`Sucecional Forest`= 0, Stem_height=0))
-
-out.pred1 <- predict(out4b, pred.df1)
-str(out.pred1)
-psi.0.quants <- apply(out.pred1$psi.0.samples, 2, quantile, 
-                      prob = c(0.1, 0.5, 0.9))
-psi.plot.dat <- data.frame(psi.med = psi.0.quants[2, ], 
-                           psi.low = psi.0.quants[1, ], 
-                           psi.high = psi.0.quants[3, ], 
-                           Elevation = Elevation.pred.vals)
-ggplot(psi.plot.dat, aes(x = Elevation, y = psi.med)) + 
-  geom_ribbon(aes(ymin = psi.low, ymax = psi.high), alpha= 0.4, fill = 'cyan4') +
-  geom_line() + 
-  theme_bw() + 
-  scale_y_continuous(limits = c(0, 1)) + 
-  labs(x = 'Elevation', y = 'Occupancy Probability')
-
-
-# Predict occupancy along a gradient of Grassland cover.  
-# Create a set of values across the range of observed Successional forest values
-Grassland.pred.vals <- seq(min(data.list$occ.covs$Grassland), 
-                           max(data.list$occ.covs$Grassland), 
-                           length.out = 100)
-
-# Scale predicted values by mean and standard deviation used to fit the model
-
-Grassland.pred.vals.scale <- ((Grassland.pred.vals - mean(data.list$occ.covs$Grassland)) / sd(data.list$occ.covs$Grassland))
-
-# Predict occupancy across forest values at mean values of all other variables
-pred.df2 <- as.matrix(data.frame(intercept = 1, Grassland = Grassland.pred.vals.scale, 
-                                 `Altitude (feet)`=0, Cropland = 0, 
-                                 Artificial = 0, DOM_score = 0, infrutescence=0,`Sucecional Forest`= 0, Stem_height=0))
-
-out.pred2 <- predict(out4b, pred.df2)
-str(out.pred2)
-psi.0.quants <- apply(out.pred2$psi.0.samples, 2, quantile, 
-                      prob = c(0.1, 0.5, 0.9))
-psi.plot.dat <- data.frame(psi.med = psi.0.quants[2, ], 
-                           psi.low = psi.0.quants[1, ], 
-                           psi.high = psi.0.quants[3, ], 
-                           Grassland = Grassland.pred.vals)
-ggplot(psi.plot.dat, aes(x =Grassland, y = psi.med)) + 
-  geom_ribbon(aes(ymin = psi.low, ymax = psi.high), alpha= 0.4, fill = 'tomato3') +
-  geom_line() + 
-  theme_bw() + 
-  scale_y_continuous(limits = c(0, 1)) + 
-  labs(x = 'Grassland', y = 'Occupancy Probability')
-
-
-###################################
-
-
-##More models
-
-
 ##Another one (scaling)
+
+###Linear Equation: logit(ψi​)=β0​+β1​⋅(Successional Forest)2+β2​⋅(Native Forest)2+β3​⋅(Grassland)2+β4​⋅DOM Score+β5​⋅Connected Trees
 
 btbw.occ.formula5 <- ~ I(scale(`Sucecional Forest`)^2) + I(scale(`Native forest`)^2) + I(scale(Grassland)^2) + scale(DOM_score) + scale(connected_trees) 
 btbw.det.formula <- ~ scale(precip) + precip
@@ -1218,98 +1051,3 @@ str(out5$beta.samples)
 MCMCplot(out5$beta.samples, ref_ovl=TRUE, ci=c(50, 90))
 
 MCMCplot(out5$alpha.samples, ref_ovl=TRUE, ci=c(50, 90))
-
-
-###Just land use
-
-btbw.occ.formula6 <- ~ scale(`Sucecional Forest`) + scale(Grassland) + scale(`Native forest`) + scale (Cropland) + scale (Artificial)
-btbw.det.formula <- ~ scale(precip)
-out6 <- spPGOcc(occ.formula = btbw.occ.formula6,
-                det.formula = btbw.det.formula,
-                data = data.list, 
-                n.batch = 4000, 
-                batch.length = 25,
-                NNGP = TRUE, 
-                cov.model = "exponential", 
-                n.neighbors = 15, 
-                n.burn = 2000, 
-                n.thin = 4, 
-                n.chains = 3, 
-                verbose = FALSE, 
-                k.fold = 2)
-
-summary(out6)
-ppc.out6 <- ppcOcc(out6, fit.stat = 'freeman-tukey', group = 1)
-summary(ppc.out6)
-waicOcc(out6)
-names(out6)
-str(out6$beta.samples)
-MCMCplot(out6$beta.samples, ref_ovl=TRUE, ci=c(50, 89))
-
-MCMCplot(out6$alpha.samples, ref_ovl=TRUE, ci=c(50, 89))
-
-
-#stPGOcc
-
-# Priors
-prior.list <- list(beta.normal = list(mean = 0, var = 2.72), 
-                   alpha.normal = list(mean = 0, var = 2.72), 
-                   sigma.sq.ig = c(2, 2), 
-                   phi.unif = c(3 / 1, 3 / 0.1), 
-                   rho.unif = c(-1, 1),
-                   sigma.sq.t.ig = c(2, 1))
-
-# Initial values
-z.init <- apply(data.list$y, c(1, 2), function(a) as.numeric(sum(a, na.rm = TRUE) > 0))
-inits.list <- list(beta = 0, alpha = 0, z = z.init, phi = 3 / .5, sigma.sq = 2, rho = 0, sigma.sq.t = 0.5)
-
-
-# Detection-nondetection data
-y <- data.list$y
-# Occupancy covariates
-X <- data.list$occ.covs
-# Detection covarites
-X.p <- data.list$det.covs
-# Spatial coordinates
-coords <- data.list$coords
-
-# Package all data into a list
-occ.covs <- X[, -1, drop = FALSE]
-colnames(occ.covs) <- c('occ.cov')
-det.covs <- list(det.cov.1 = X.p[, , 2])
-data.list <- list(y = y, 
-                  occ.covs = occ.covs, 
-                  det.covs = det.covs, 
-                  coords = coords)
-
-# Tuning
-tuning.list <- list(phi = 1, rho = 1)
-# Number of batches
-n.batch <- 10
-# Batch length
-batch.length <- 25
-n.iter <- n.batch * batch.length
-
-trend<-TRUE
-
-occ.covs <- list(int = data.list$X[, , 1],
-                 trend = data.list$X[, , 2],
-                 occ.cov.1 = data.list$X[, , 3])
-
-out7 <- stPGOcc(btbw.occ.formula4,
-                btbw.det.formula, 
-                data = data.list, 
-                inits = inits.list, 
-                n.batch = n.batch, 
-                batch.length = batch.length, 
-                priors = prior.list,
-                cov.model = "exponential", 
-                tuning = tuning.list, 
-                NNGP = TRUE, 
-                ar1 = TRUE,
-                n.neighbors = 5, 
-                search.type = 'cb', 
-                n.report = 10, 
-                n.burn = 50, 
-                n.chains = 1)
-
