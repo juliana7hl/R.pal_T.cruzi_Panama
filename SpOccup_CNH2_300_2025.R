@@ -65,6 +65,9 @@ summary(out1.300)
 
 ###Successional forest
 
+####linear equation: logit(ψi​)=β0​+β1​⋅Successional_forest​+β2​⋅Successional_forest^2
+
+
 btbw.occ.formula1.300<- ~ I(scale(`Sucecional Forest`)^2)
 btbw.det.formula <- ~ scale(tempmax)
 out1.300 <- spPGOcc(occ.formula = btbw.occ.formula1.300,
@@ -117,6 +120,7 @@ summary(ppc.out1b)
 waicOcc(out1b)
 
 ##### Native forest
+####linear equation: logit(ψi​)=β0​+β1​⋅Native_forest+β2​⋅Native_forest^2
 
 btbw.occ.formula2.300<- ~ I(scale(`Native forest`)^2)
 btbw.det.formula <- ~ scale(tempmax)
@@ -174,6 +178,7 @@ summary(ppc.out2b)
 waicOcc(out2b)
 
 ### Grassland
+####linear equation: logit(ψi​)=β0​+β1​⋅Grassland+β2​⋅Grassland^2
 
 btbw.occ.formula3.300<- ~ I(scale(Grassland)^2)
 btbw.det.formula <- ~ scale(tempmax)
@@ -231,6 +236,7 @@ summary(ppc.out3b)
 waicOcc(out3b)
 
 ### Cropland
+####linear equation: logit(ψi​)=β0​+β1​⋅Cropland+β2​⋅Cropland^2
 
 btbw.occ.formula4.300<- ~ scale(Cropland)
 btbw.det.formula <- ~ scale(tempmax)
@@ -257,8 +263,9 @@ str(out4.300$beta.samples)
 MCMCplot(out4.300$beta.samples, ref_ovl=TRUE, mar = c(5.1, 4.1, 4.1, 2.1), labels= c("Intercept", "Cropland"),ci=c(50, 95))
 
 ### Elevation
+####linear equation: logit(ψi​)=β0​+β1​⋅Elevation+β2​⋅Elevation^2
 
-btbw.occ.formula5.300<- ~ I(scale(Artificial)^2)
+btbw.occ.formula5.300<- ~ I(scale(Elevation)^2)
 btbw.det.formula <- ~ scale(tempmax)
 out5.300 <- spPGOcc(occ.formula = btbw.occ.formula5.300,
                     det.formula = btbw.det.formula,
@@ -315,8 +322,9 @@ waicOcc(out5b)
 
 
 ###
+####linear equation: logit(ψi​)=β0​+β1​⋅Stem height+β2​⋅Stem height^2
 
-btbw.occ.formula6.300<- ~ I(scale(Artificial)^2)
+btbw.occ.formula6.300<- ~ I(scale(`Stem height`)^2)
 btbw.det.formula <- ~ scale(tempmax)
 out6.300 <- spPGOcc(occ.formula = btbw.occ.formula6.300,
                     det.formula = btbw.det.formula,
@@ -341,8 +349,8 @@ str(out6.300$beta.samples)
 MCMCplot(out6.300$beta.samples, ref_ovl=TRUE, mar = c(5.1, 4.1, 4.1, 2.1), labels= c("Intercept", "Stem height"),ci=c(50, 89))
 
 ###
-
-btbw.occ.formula7.300<- ~ scale(Artificial)
+####linear equation: logit(ψi​)=β0​+β1​⋅DOM score+β2​⋅DOM score^2
+btbw.occ.formula7.300<- ~ scale(`DOM score`)
 btbw.det.formula <- ~ scale(tempmax)
 out7.300 <- spPGOcc(occ.formula = btbw.occ.formula7.300,
                     det.formula = btbw.det.formula,
@@ -367,7 +375,7 @@ str(out7.300$beta.samples)
 MCMCplot(out7.300$beta.samples, ref_ovl=TRUE, mar = c(5.1, 4.1, 4.1, 2.1), labels= c("Intercept", "DOM score"),ci=c(50, 89))
 
 ###
-
+####linear equation: logit(ψi​)=β0​+β1​⋅infrutescence+β2​⋅infrutescence^2
 btbw.occ.formula8.300<- ~ I(scale(infrutescence)^2)
 btbw.det.formula <- ~ scale(tempmax)
 out8.300 <- spPGOcc(occ.formula = btbw.occ.formula8.300,
@@ -393,7 +401,7 @@ str(out8.300$beta.samples)
 MCMCplot(out8.300$beta.samples, ref_ovl=TRUE, mar = c(5.1, 4.1, 4.1, 2.1), labels= c("Intercept", "infrutescence"),ci=c(50, 90))
 
 ###
-
+####linear equation: logit(ψi​)=β0​+β1​⋅connected_trees+β2​⋅connected_trees^2
 btbw.occ.formula9.300<- ~ scale(connected_trees)
 btbw.det.formula <- ~ scale(precip)
 out9.300 <- spPGOcc(occ.formula = btbw.occ.formula9.300,
@@ -458,6 +466,8 @@ waicOcc(out4a)
 
 ######Additive models
 
+###Linear model: logit(ψi​)=β0​+β1​⋅Sucecional Forest^2​+β2​⋅Grassland^2​+β3​⋅infrutescence
+
 btbw.occ.formula10.300 <- ~ I(scale(`Sucecional Forest`)^2) + I(scale(Grassland))^2 + scale(infrutescence)
 btbw.det.formula <- ~ scale(precip)
 out10.300  <- spPGOcc(occ.formula = btbw.occ.formula10.300 ,
@@ -484,6 +494,7 @@ MCMCplot(out10.300$alpha.samples, ref_ovl=TRUE, ci=c(50, 95))
 
 ####### Models with only land Use covers
 
+###Linear Model: logit(ψi​)=β0​+β1​⋅Sucecional Forest^2​+β2​⋅Grassland^2​+β3​⋅Cropland^2​+β4​⋅Artificial^2​
 btbw.occ.formula11.300 <- ~ I(scale(`Sucecional Forest`)^2) + I(scale(Grassland))^2 + I(scale(Cropland)^2) + I(scale(Artificial)^2) 
 btbw.det.formula <- ~ scale(precip)
 out11.300  <- spPGOcc(occ.formula = btbw.occ.formula11.300 ,
@@ -511,7 +522,7 @@ MCMCplot(out11.300$alpha.samples, ref_ovl=TRUE, ci=c(50, 95))
 
 
 ####
-
+####Linear Model: logit(ψi​)=β0​+β1​⋅Sucecional Forest^2​+β2​⋅Grassland^2​+β3​⋅Cropland^2​+β4​⋅Artificial^2​+β5​⋅infrutescence​
 btbw.occ.formula12.300 <- ~ I(scale(`Sucecional Forest`)^2) + I(scale(Grassland))^2 + I(scale(Cropland)^2) + I(scale(Artificial)^2) + scale(infrutescence)
 btbw.det.formula <- ~ scale(precip)
 out12.300  <- spPGOcc(occ.formula = btbw.occ.formula12.300 ,
