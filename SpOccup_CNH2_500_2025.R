@@ -1,5 +1,26 @@
 ####Code for landscape compositions withing buffers of 500 m radius
 
+###Responses and covariates description:
+
+###logit(ψi​)= Probability that btbw occupies site i
+###β0= Intercept
+
+| #Covariate                 | #Description                                                                               |
+| -------------------------- | ----------------------------------------------------------------------------------------- |
+| #**Native Forest**         | #Percent (0–1) of native forest in the landscape surrounding each palm tree            |
+| #**Successional Forest**   | #Percent (0–1) of successional forest surrounding each palm tree                       |
+| #**Grassland**             | #Percent (0–1) of grassland surrounding each palm tree                                 |
+| #**Artificial Land Cover** | #Percent (0–1) of artificial land cover (e.g., urban areas) surrounding each palm tree |
+| #**Cropland**              | #Percent (0–1) of cropland surrounding each palm tree                                  |
+| #**DOM Score**             | #Death organic matter score recorded in the field                                              |
+| #**Infrutescence**         | #scored amount of infrutescences counted at each palm tree                                    |
+| #**Altitude**              | #Altitude (in feet) of the sampling point                                                  |
+| #**Stem Height**           | #Stem height (m) of palm trees                                |
+| #**Connected Trees**       | #Number of trees connected to the focal palm (as a proxy of canopy connectivity)           |
+
+
+
+
 library(spOccupancy)
 library(datasets)
 library(base)
